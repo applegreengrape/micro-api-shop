@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>💳 Pay One Pound to get unlimited access</title>
+    <meta name="description" content="A demo of Stripe Payment Intents" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/global.css" />
+    <link rel="stylesheet" href="css/main.css" />
+    <link href='https://fonts.googleapis.com/css?family=Alike' rel='stylesheet'>
+    <script src="https://js.stripe.com/v3/"></script>
+    <script src="/script.js" defer></script>
+  </head>
+  <body>
+      <span class="img-container"> <!-- Inline parent element -->
+        <img src="https://media.giphy.com/media/10Qc9DdLbcSKuk/giphy.gif" style="width: 15%; margin-top: 25px">
+        <h4>👋 One Pound for Unlimited Access to NLP API 💳</h4>
+        <p>This my demo site deployed in test mode with stripe. Please don't your real credit card. You can find stripe test cards <a href="https://stripe.com/docs/testing#cards">here</a></p>
+      </span>
+    <div class="sr-root">
+      <div class="sr-main">
+        <form id="payment-form" class="sr-payment-form">
+          <div class="sr-combo-inputs-row">
+            <div class="sr-input sr-card-element" id="card-element"></div>
+          </div>
+          <div class="sr-field-error" id="card-errors" role="alert"></div>
+          <button id="submit">
+            <div class="spinner hidden" id="spinner"></div>
+            <span id="button-text">Pay</span><span id="order-amount"></span>
+          </button>
+        </form>
+        <div class="sr-result hidden">
+          <p> 💰Payment Completed! 🥳</p>
+          <pre></pre>
+          <code></code>
+        </div>
+      </div>
+    </div> 
+  </body>
+</html>

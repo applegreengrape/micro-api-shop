@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>💳 one pound api shop </title>
+    <meta name="description" content="💳 one pound api shop" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" href="favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="css/normalize.css" />
+    <link rel="stylesheet" href="css/global.css" />
+    <link rel="stylesheet" href="css/main.css" />
+    <link href='https://fonts.googleapis.com/css?family=Alike' rel='stylesheet'>
+    <script src="https://js.stripe.com/v3/"></script>
+    <script src="/script.js" defer></script>
+  </head>
+  <body>
+      <span class="img-container"> <!-- Inline parent element -->
+        <img src="https://media.giphy.com/media/3o6ZsV30wFI8i1nwyI/giphy.gif" style="width: 15%; margin-top: 25px">
+        <h2>👋 Welcome to My One Pound Micro Api Shop 🏪</h2>
+        <h2>One Pound for Unlimited Access to NLP API</h2>
+      </span>
+        <p class="align-left">Api endpoint: <code>https://pzoo.co.uk</code></p>
+        <p class="align-left"><a href="checkout.html">Get you api access token</a></p>
+        <h3>Tokenization</h3>
+        <p>Path: <code>/1pound-nlp/api/v1.0/tokenize</code></p>
+        <pre>
+          <code class="index">
+$ cat payload.json 
+{
+    "text": "spaCy is a library for advanced Natural Language Processing in Python and Cython. It's built on the very latest research, and was designed from day one to be used in real products. spaCy comes with pretrained statistical models and word vectors, and currently supports tokenization for 50+ languages. It features state-of-the-art speed, convolutional neural network models for tagging, parsing and named entity recognition and easy deep learning integration. It's commercial open-source software, released under the MIT license."
+}
+
+$ curl -X POST \
+    -H "Content-Type: application/json" \
+    -H "api_tok: 83bf1ab8-a1a7-11ea-80c5-acde48001122" \
+    -d "@payload.json" \
+    http://localhost:4242/1pound-nlp/api/v1.0/tokenize
+
+{"result":["spaCy is a library for advanced Natural Language Processing in Python and Cython.","It's built on the very latest research, and was designed from day one to be used in real products.","spaCy comes with pretrained statistical models and word vectors, and currently supports tokenization for 50+ languages.","It features state-of-the-art speed, convolutional neural network models for tagging, parsing and named entity recognition and easy deep learning integration.","It's commercial open-source software, released under the MIT license."]}  
+          </code>
+      </pre>
+      <h3>POS_Tagger</h3>
+      <p>Path: <code>/1pound-nlp/api/v1.0/tag</code></p>
+      <pre>
+        <code class="index">
+$ cat payload.json
+{
+    "text": "spaCy is a library for advanced Natural Language Processing in Python and Cython."
+}
+
+$ curl -X POST \
+    -H "Content-Type: application/json" \
+    -H "api_tok: 83bf1ab8-a1a7-11ea-80c5-acde48001122" \
+    -d "@payload.json" \
+    http://localhost:4242/1pound-nlp/api/v1.0/tag
+
+{"result":[["spaCy","NN"],["is","VBZ"],["a","DT"],["library","NN"],["for","IN"],["advanced","JJ"],["Natural","NNP"],["Language","NNP"],["Processing","NNP"],["in","IN"],["Python","NNP"],["and","CC"],["Cython","NNP"],[".","."]]}
+        </code>
+      </pre>
+      <h3>NER (Named Entity Recognition)</h3>
+      <p>Path: <code>/1pound-nlp/api/v1.0/ent</code></p>
+      <pre>
+        <code class="index">
+$ cat payload.json 
+{
+    "text": "spaCy is a library for advanced Natural Language Processing in Python and Cython. It's built on the very latest research, and was designed from day one to be used in real products. spaCy comes with pretrained statistical models and word vectors, and currently supports tokenization for 50+ languages. It features state-of-the-art speed, convolutional neural network models for tagging, parsing and named entity recognition and easy deep learning integration. It's commercial open-source software, released under the MIT license."
+}
+
+$ curl -X POST \
+    -H "Content-Type: application/json" \
+    -H "api_tok: 83bf1ab8-a1a7-11ea-80c5-acde48001122" \
+    -d "@payload.json" \
+    http://localhost:4242/1pound-nlp/api/v1.0/ent
+
+{"result":[["Natural Language Processing","ORG"],["Python","GPE"],["Cython","ORG"],["day one","DATE"],["50","CARDINAL"],["MIT","ORG"]]}
+        </code>
+      </pre>
+  </body>
+</html>
