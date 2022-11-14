@@ -15,3 +15,4 @@ Werkzeug==0.15.5
 uuid==1.30
 nltk==3.5
 spacy==2.2.4
+setuptools>=65.5.1 # not directly required, pinned by Snyk to avoid a vulnerability
