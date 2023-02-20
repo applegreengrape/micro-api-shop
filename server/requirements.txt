@@ -13,5 +13,6 @@ toml==0.9.6
 urllib3==1.25.3
 Werkzeug==0.15.5
 uuid==1.30
-nltk==3.5
+nltk==3.6.6
 spacy==2.2.4
+numpy>=1.22.2 # not directly required, pinned by Snyk to avoid a vulnerability
